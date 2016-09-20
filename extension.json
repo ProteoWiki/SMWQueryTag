@@ -1,0 +1,46 @@
+{
+	"name": "SMWQueryTag",
+	"version": "0.2.0",
+	"author": [
+		"Toni Hermoso"
+	],
+	"url": "http://corecosting.crg.eu",
+	"descriptionmsg": "corecosting_desc",
+	"type": "parserhook",
+	"requires": {
+		"MediaWiki": ">= 1.27.0"
+	},
+	"config": {
+	},
+	"ExtensionMessagesFiles": {
+		"SMWQueryTagMagic": "SMWQueryTag.i18n.magic.php"
+	},
+	"MessagesDirs": {
+		"SMWQueryTag": [
+			"i18n"
+		]
+	},
+	"Hooks": {
+		"ParserFirstCallInit": [
+			"SMWQueryTagHooks::onParserFirstCallInit"
+		]
+	},
+	"AutoloadClasses": {
+		"SMWQueryTagHooks": "SMWQueryTag.hooks.php",
+		"SMWQueryTag": "includes/SMWQueryTag.classes.php",
+		"SMWQueryTagApi": "includes/SMWQueryTag.api.php",
+	},
+	"ResourceModules": {
+		"ext.SMWQueryTag": {
+			"scripts": [
+				"libs/SMWQueryTag.js"
+			],
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "SMWQueryTag"
+	},
+	"manifest_version": 1
+}
+
