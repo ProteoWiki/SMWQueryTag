@@ -28,13 +28,16 @@
 	"AutoloadClasses": {
 		"SMWQueryTagHooks": "SMWQueryTag.hooks.php",
 		"SMWQueryTag": "includes/SMWQueryTag.classes.php",
-		"SMWQueryTagApi": "includes/SMWQueryTag.api.php",
+		"SMWQueryTagApi": "includes/SMWQueryTag.api.php"
+	},
+	"ApiModules": {
+		"smwquerytag" : "SMWQueryTagApi"
 	},
 	"ResourceModules": {
 		"ext.SMWQueryTag": {
 			"scripts": [
 				"libs/SMWQueryTag.js"
-			],
+			]
 		}
 	},
 	"ResourceFileModulePaths": {
