@@ -20,7 +20,7 @@
 	});
 
 
-	$( document ).on( '.SMWQueryTag', 'DOMNodeInserted', function(event) {
+	$( document ).on( 'DOMNodeInserted', '.SMWQueryTag', function(event) {
 		
 		if ($(this).attr('data-SMWQueryTag-stop') !== undefined) {
 			// attribute exists
@@ -30,7 +30,7 @@
 		
 	});
 	
-	$( document ).on( '.SMWQueryLive', 'DOMNodeInserted', function(event) {
+	$( document ).on( 'DOMNodeInserted', '.SMWQueryLive', function(event) {
 		processSMWQueryList(this);
 	});
 
