@@ -51,23 +51,24 @@
 			if (!sep) { sep = "-"; }
 	
 			if (! $(query).hasClass('SMWQueryTag_changed') ) {
-	
-				$.get( mw.util.wikiScript(), {
-					format: 'json',
-					action: 'ajax',
-					rs: 'SMWQueryTag::returnProperty',
-					rsargs: [page, props, sep, template] // becomes &rsargs[]=arg1&rsargs[]=arg2...
-				}, function(data) {
-	
+
+				params = {};
+				params.action = "smwquerytag";
+				params.format = "json";
+				params.method = "property";
+				params.title = page;
+				params.listprops = props;
+				params.sep = sep;
+				params.template = template;
+
+				var posting = $.post( wgScriptPath + "/api.php", params );
+				posting.done(function( data ) {
 					$(query).addClass("SMWQueryTag_changed");
 					$(query).empty();
 					$(query).append(data);
-	
 				});
 			}
-	
 		}
-	
 	}
 	
 	function processSMWQueryList ( query ) {
@@ -102,17 +103,21 @@
 	
 			if (! $(query).hasClass('SMWQueryList_changed') ) {
 	
-				$.get( mw.util.wikiScript(), {
-					format: 'json',
-					action: 'ajax',
-					rs: 'SMWQueryTag::returnList',
-					rsargs: [querystr, props, sep, mainlabel, limit] // becomes &rsargs[]=arg1&rsargs[]=arg2...
-				}, function(data) {
-	
-					$(query).addClass("SMWQueryList_changed");
+				params = {};
+				params.action = "smwquerytag";
+				params.format = "json";
+				params.method = "list";
+				params.title = querystr;
+				params.listprops = props;
+				params.sep = sep;
+				params.mainlabel = template;
+				params.limit = limit;
+
+				var posting = $.post( wgScriptPath + "/api.php", params );
+				posting.done(function( data ) {
+					$(query).addClass("SMWQueryTag_changed");
 					$(query).empty();
 					$(query).append(data);
-	
 				});
 			}
 	

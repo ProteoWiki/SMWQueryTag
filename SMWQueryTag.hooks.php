@@ -1,5 +1,5 @@
 <?php
-class CorecostingHooks {
+class SMWQueryTagHooks {
 
 	// Hook our callback function into the parser
 	public static function onParserFirstCallInit( $parser ) {
