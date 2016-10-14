@@ -133,75 +133,74 @@ class SMWQueryTag {
 	}
 
 
-	public static function returnProperty ( $title_text, $listprops, $separator, $template ) {
+	public static function returnProperty ( $title_text, $listprops, $separator="-", $template=null ) {
 
 		$props = array();
 		
 		$props = explode( ",", $listprops );
 		
 		$values = self::getStatus( $title_text, $props );
-
+	
 		if ( count( $values ) > 0 ) {
-		     
-		     if (! $template ) {
-			    		
-			    $sep = "-";
-			    if ( $separator ) {
-				   $sep = $separator;
-			    } 
-		     
-			    return ( implode( $sep, $values ) );
-		     }
-		     
-		     else {
-			    
-			    #print_r($values);
-			    
-			    $count = preg_match_all ( "/(\#\d+)/", $template, $matches ) ;
-			    
-			    if ( $count > 0 ) {
+			
+			if (! $template ) {
+					
+				$sep = "-";
+				if ( $separator ) {
+				      $sep = $separator;
+				} 
+			
+				return ( implode( $sep, $values ) );
+			}
+			
+			else {
 				
-				   foreach ( $matches[0] as $match ) {
-				        
-					#echo $match;
-								
-					$num = str_replace( "#", "", $match );
-										
-					if ( isset( $values[$num] ) ) {
-					  
-					  $matchre = "/\#".$num."/";
-					  
-					  $template = preg_replace ( $matchre, $values[$num], $template );
-					  
+				#print_r($values);
+				
+				$count = preg_match_all ( "/(\#\d+)/", $template, $matches ) ;
+				
+				if ( $count > 0 ) {
+
+					foreach ( $matches[0] as $match ) {
+						
+						#echo $match;
+									   
+						$num = str_replace( "#", "", $match );
+											   
+						if ( isset( $values[$num] ) ) {
+						
+							$matchre = "/\#".$num."/";
+						
+							$template = preg_replace ( $matchre, $values[$num], $template );
+						
+						}
 					}
-				   }
-				   
-				   return $template;
-			    
-			    } else {
-				   
-				return("");   
-				   
-			    }
-			    
-			    
-		     }
-		     
-		     
-	        } else {
-		      return("");
-	        }
-		
+					
+					return $template;
+				 
+				} else {
+				
+					return( null );   
+				
+				}
+				
+				
+			}
+
+		 } else {
+		      return( null );
+		 }
+
 	}
 	
 	
-        public static function returnList ( $query, $listprops, $separator, $mainlabel, $limit=100 ) {
-	      
+	public static function returnList ( $query, $listprops, $separator="-", $mainlabel=true, $limit=100 ) {
+		
 		$props = array();
 		
-	        if ($listprops != '') {
-		     
-		     $props = explode( ",", $listprops );
+		if ($listprops != '') {
+			
+			$props = explode( ",", $listprops );
 		}
 		
 		$sep = "-";
@@ -212,17 +211,16 @@ class SMWQueryTag {
 		$main = false;
 		
 		if ( $mainlabel ) {
-		     $main = true;    
+			$main = true;
 		}
-	      		
+		
 		$values = self::getList( $query, $props, $main, $limit );
-
 
 		if ( count( $values ) > 0 ) {
 			return ( implode($sep, $values) );
 
 		} else {
-			return("");
+			return( null );
 		}
 		
 	}
