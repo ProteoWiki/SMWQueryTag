@@ -19,7 +19,6 @@
 		});
 	});
 
-
 	$( document ).on( 'DOMNodeInserted', '.SMWQueryTag', function(event) {
 		
 		if ($(this).attr('data-SMWQueryTag-stop') !== undefined) {
@@ -33,7 +32,6 @@
 	$( document ).on( 'DOMNodeInserted', '.SMWQueryLive', function(event) {
 		processSMWQueryList(this);
 	});
-
 
 	function processSMWQueryTag ( query ) {
 	
@@ -61,11 +59,13 @@
 				params.sep = sep;
 				params.template = template;
 
-				var posting = $.post( wgScriptPath + "/api.php", params );
+				var posting = $.post( mw.config.get('wgScriptPath') + "/api.php", params );
 				posting.done(function( data ) {
 					$(query).addClass("SMWQueryTag_changed");
 					$(query).empty();
-					$(query).append(data);
+					if ( data.smwquerytag && data.smwquerytag['status'] && data.smwquerytag['content'] && data.smwquerytag['status'] === "OK" ) {
+						$(query).append(data.smwquerytag['content']);
+					}
 				});
 			}
 		}
@@ -113,11 +113,13 @@
 				params.mainlabel = template;
 				params.limit = limit;
 
-				var posting = $.post( wgScriptPath + "/api.php", params );
+				var posting = $.post( mw.config.get('wgScriptPath') + "/api.php", params );
 				posting.done(function( data ) {
 					$(query).addClass("SMWQueryTag_changed");
 					$(query).empty();
-					$(query).append(data);
+					if ( data.smwquerytag && data.smwquerytag['status'] && data.smwquerytag['content'] && data.smwquerytag['status'] === "OK" ) {
+						$(query).append(data.smwquerytag['content']);
+					}
 				});
 			}
 	

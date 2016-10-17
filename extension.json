@@ -5,7 +5,7 @@
 		"Toni Hermoso"
 	],
 	"url": "http://corecosting.crg.eu",
-	"descriptionmsg": "corecosting_desc",
+	"descriptionmsg": "Extension for handling SMW queries in Corecosting",
 	"type": "parserhook",
 	"requires": {
 		"MediaWiki": ">= 1.27.0"
@@ -30,7 +30,7 @@
 		"SMWQueryTag": "includes/SMWQueryTag.classes.php",
 		"SMWQueryTagApi": "includes/SMWQueryTag.api.php"
 	},
-	"ApiModules": {
+	"APIModules": {
 		"smwquerytag" : "SMWQueryTagApi"
 	},
 	"ResourceModules": {

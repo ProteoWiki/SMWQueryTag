@@ -11,6 +11,8 @@ class SMWQueryTagApi extends ApiBase {
 		$params = $this->extractRequestParams();
 
  		$output = null;
+
+		// Enable further protection here for security reasons
  		
 		switch ( $params['method'])  {
 			case "property": # Process property

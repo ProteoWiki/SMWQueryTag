@@ -188,7 +188,7 @@ class SMWQueryTag {
 			}
 
 		 } else {
-		      return( null );
+			return( null );
 		 }
 
 	}
