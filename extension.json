@@ -44,6 +44,7 @@
 		"localBasePath": "",
 		"remoteExtPath": "SMWQueryTag"
 	},
+	"load_composer_autoloader": true,
 	"manifest_version": 1
 }
 
