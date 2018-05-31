@@ -1,7 +1,7 @@
 {
 	"name": "mediawiki/smw-query-tag",
 	"type": "mediawiki-extension",
-	"description": "MediaWiki extension adding tag functionality for providing SMW queries",
+	"description": "MediaWiki extension for handling SMW queries from a tag",
 	"keywords": [
 		"MediaWiki",
 		"Semantic MediaWiki",

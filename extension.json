@@ -4,8 +4,8 @@
 	"author": [
 		"Toni Hermoso"
 	],
-	"url": "http://corecosting.crg.eu",
-	"descriptionmsg": "Extension for handling SMW queries in Corecosting",
+	"url": "https://github.com/ProteoWiki/SMWQueryTag",
+	"descriptionmsg": "MediaWiki extension for handling SMW queries from a tag",
 	"type": "parserhook",
 	"requires": {
 		"MediaWiki": ">= 1.27.0"
